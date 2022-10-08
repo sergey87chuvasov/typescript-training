@@ -36,3 +36,28 @@ const logNumber: (i: number) => void = (i: number) => {
 
 // !!! ts can understand automatically what the type of variable if we write it in one string
 const color = 'red';
+
+// when to use type annotations
+// 1. functions return the 'any' type
+const json = '{"x": 10, "y": 20}';
+const coordinates: { x: number; y: number } = JSON.parse(json);
+console.log(coordinates);
+
+// 2. when we declare variable in one lane and initialize it later
+let words = ['one', 'two', 'three'];
+let isTwo: boolean;
+// let isTwo = false;
+for (let i = 0; i < words.length; i++) {
+  if (words[i] === 'two') {
+    isTwo = true;
+  }
+}
+
+// 3. variables whose type can't be inferred (не может быть выведен)
+let myNumbers = [-10, -1, 12];
+let positiveNumber: boolean | number = false;
+for (let i = 0; i < myNumbers.length; i++) {
+  if (myNumbers[i] > 0) {
+    positiveNumber = myNumbers[i]; // !!! mistake add boolean | number
+  }
+}
