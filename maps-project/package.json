@@ -1,10 +1,14 @@
 {
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@types/googlemaps": "^3.43.3",
     "typescript": "^4.8.4"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.14.3",
     "@types/faker": "^6.6.9",
+    "@types/google-maps": "^3.2.3",
+    "@types/google-maps-web": "^3.43.4",
     "@types/google.maps": "^3.50.4",
     "faker": "^6.6.6"
   }
