@@ -3,8 +3,12 @@
 // import '@types/google-maps';
 import { Loader } from '@googlemaps/js-api-loader';
 
-// import { User } from './User';
-// import { Company } from './Company';
+import { User } from './User';
+import { Company } from './Company';
+import { CustomMap } from './CustomMap';
+
+new CustomMap('map');
+// const customMap = new CustomMap();
 
 // const user = new User();
 // console.log(user);
@@ -12,13 +16,14 @@ import { Loader } from '@googlemaps/js-api-loader';
 // const company = new Company();
 // console.log(company);
 
-new google.maps.Map(document.getElementById('map'), {
-  zoom: 1,
-  center: {
-    lat: 0,
-    lng: 0,
-  },
-});
+// ! проверка на null
+// const map = new google.maps.Map(document.getElementById('map')!, {
+//   zoom: 1,
+//   center: {
+//     lat: 0,
+//     lng: 0,
+//   },
+// });
 
 // opt 1
 // let map: google.maps.Map;
