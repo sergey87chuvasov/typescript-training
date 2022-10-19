@@ -7,14 +7,16 @@ import { User } from './User';
 import { Company } from './Company';
 import { CustomMap } from './CustomMap';
 
-new CustomMap('map');
-// const customMap = new CustomMap();
+// new CustomMap('map');
 
-// const user = new User();
+const user = new User();
 // console.log(user);
-
-// const company = new Company();
+const company = new Company();
 // console.log(company);
+
+const customMap = new CustomMap('map');
+customMap.addUserMarker(user);
+customMap.addCompanyMarker(company);
 
 // ! проверка на null
 // const map = new google.maps.Map(document.getElementById('map')!, {
