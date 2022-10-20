@@ -22897,6 +22897,8 @@ exports.Company = Company;
 },{"@faker-js/faker":"node_modules/@faker-js/faker/dist/esm/index.mjs"}],"src/CustomMap.ts":[function(require,module,exports) {
 "use strict";
 
+// import { User } from './User';
+// import { Company } from './Company';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -22911,22 +22913,50 @@ var CustomMap = /** @class */function () {
       }
     });
   }
-  CustomMap.prototype.addUserMarker = function (user) {
-    new google.maps.Marker({
+  // 1 version
+  // addUserMarker(user: User): void {
+  //   new google.maps.Marker({
+  //     map: this.googleMap,
+  //     position: {
+  //       lat: user.location.lat,
+  //       lng: user.location.lng,
+  //     },
+  //   });
+  // }
+  // addCompanyMarker(company: Company): void {
+  //   new google.maps.Marker({
+  //     map: this.googleMap,
+  //     position: {
+  //       lat: company.location.lat,
+  //       lng: company.location.lng,
+  //     },
+  //   });
+  // }
+  // 2 version - bad
+  // addMarker(mappable: User | Company): void {
+  //   new google.maps.Marker({
+  //     map: this.googleMap,
+  //     position: {
+  //       lat: mappable.location.lat,
+  //       lng: mappable.location.lng,
+  //     },
+  //   });
+  // }
+  // 3 version + interface
+  CustomMap.prototype.addMarker = function (mappable) {
+    var _this = this;
+    var marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
-        lat: user.location.lat,
-        lng: user.location.lng
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
       }
     });
-  };
-  CustomMap.prototype.addCompanyMarker = function (company) {
-    new google.maps.Marker({
-      map: this.googleMap,
-      position: {
-        lat: company.location.lat,
-        lng: company.location.lng
-      }
+    marker.addListener('click', function () {
+      var infoWindow = new google.maps.InfoWindow({
+        content: 'Hey there!'
+      });
+      infoWindow.open(_this.googleMap, marker);
     });
   };
   return CustomMap;
@@ -22941,14 +22971,11 @@ Object.defineProperty(exports, "__esModule", {
 var User_1 = require("./User");
 var Company_1 = require("./Company");
 var CustomMap_1 = require("./CustomMap");
-// new CustomMap('map');
 var user = new User_1.User();
-// console.log(user);
 var company = new Company_1.Company();
-// console.log(company);
 var customMap = new CustomMap_1.CustomMap('map');
-customMap.addUserMarker(user);
-customMap.addCompanyMarker(company);
+customMap.addMarker(user);
+customMap.addMarker(company);
 // ! проверка на null
 // const map = new google.maps.Map(document.getElementById('map')!, {
 //   zoom: 1,
@@ -23011,7 +23038,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61304" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55519" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
