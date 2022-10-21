@@ -22864,6 +22864,7 @@ exports.User = void 0;
 var faker_1 = require("@faker-js/faker");
 var User = /** @class */function () {
   function User() {
+    this.color = 'black';
     // from documentation
     this.name = faker_1.faker.name.firstName();
     this.location = {
@@ -22871,6 +22872,9 @@ var User = /** @class */function () {
       lng: parseFloat(faker_1.faker.address.longitude())
     };
   }
+  User.prototype.markerContent = function () {
+    return "User Name: ".concat(this.name);
+  };
   return User;
 }();
 exports.User = User;
@@ -22884,6 +22888,7 @@ exports.Company = void 0;
 var faker_1 = require("@faker-js/faker");
 var Company = /** @class */function () {
   function Company() {
+    this.color = 'white';
     this.companyName = faker_1.faker.company.name();
     this.cathPhrase = faker_1.faker.company.catchPhrase();
     this.location = {
@@ -22891,6 +22896,9 @@ var Company = /** @class */function () {
       lng: parseFloat(faker_1.faker.address.longitude())
     };
   }
+  Company.prototype.markerContent = function () {
+    return "\n    <div>\n      <h1>Company Name: ".concat(this.companyName, "</h1>\n      <h3>Company Catchphrase: ").concat(this.cathPhrase, "</h3>\n    </div>\n    ");
+  };
   return Company;
 }();
 exports.Company = Company;
@@ -22954,7 +22962,7 @@ var CustomMap = /** @class */function () {
     });
     marker.addListener('click', function () {
       var infoWindow = new google.maps.InfoWindow({
-        content: 'Hey there!'
+        content: mappable.markerContent()
       });
       infoWindow.open(_this.googleMap, marker);
     });
@@ -23038,7 +23046,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55519" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54553" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
