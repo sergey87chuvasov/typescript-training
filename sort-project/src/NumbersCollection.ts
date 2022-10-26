@@ -9,7 +9,6 @@
 export class NumbersCollection {
   constructor(public data: number[]) {}
 
-  // обращение к дтнне как свойству - get
   get length(): number {
     return this.data.length;
   }
@@ -24,6 +23,3 @@ export class NumbersCollection {
     this.data[rightIndex] = leftHand;
   }
 }
-
-// const collection = new NumbersCollection([1, 2, 3]);
-// collection.lenght; // св-во
