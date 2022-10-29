@@ -1,5 +1,9 @@
-export class CharactersCollection {
-  constructor(public data: string) {}
+import { Sorter } from './Sorter';
+
+export class CharactersCollection extends Sorter {
+  constructor(public data: string) {
+    super(); // те CharactersCollection класс имеет доступ к методу Sort внутри себя тк он унаследовал этот метод от класса Sorter
+  }
 
   get length(): number {
     return this.data.length;
