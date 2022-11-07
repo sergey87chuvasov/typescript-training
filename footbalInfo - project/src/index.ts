@@ -1,6 +1,8 @@
 // import fs from 'fs';
 import { CsvFileReader } from './CsvFileReader';
 
+import { MatchResult } from './MatchResult';
+
 // в переменн будут содержать все файлы csv в одной строке
 // const matches = fs
 //   .readFileSync('football.csv', {
@@ -20,13 +22,17 @@ import { CsvFileReader } from './CsvFileReader';
 // with class
 const reader = new CsvFileReader('football.csv');
 reader.read();
+console.log(reader.data);
 
-// with big LETTER - Enum - enumeration
-enum MatchResult {
-  HomeWin = 'H',
-  AwayWin = 'A',
-  Draw = 'D',
-}
+// console.log(reader.data[0][0]);
+// const match1Date = reader.data[0][0];
+
+// // with big LETTER - Enum - enumeration
+// enum MatchResult {
+//   HomeWin = 'H',
+//   AwayWin = 'A',
+//   Draw = 'D',
+// }
 
 // MatchResult.AwayWin === 'A'
 
