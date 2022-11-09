@@ -1,6 +1,6 @@
 // import fs from 'fs';
-import { CsvFileReader } from './CsvFileReader';
-
+// import { CsvFileReader } from './CsvFileReader';
+import { MatchReader } from './MatchReader';
 import { MatchResult } from './MatchResult';
 
 // в переменн будут содержать все файлы csv в одной строке
@@ -20,7 +20,7 @@ import { MatchResult } from './MatchResult';
 // const draw = 'D';
 
 // with class
-const reader = new CsvFileReader('football.csv');
+const reader = new MatchReader('football.csv');
 reader.read();
 console.log(reader.data);
 
