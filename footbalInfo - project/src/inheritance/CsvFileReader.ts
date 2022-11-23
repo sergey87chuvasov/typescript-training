@@ -2,6 +2,7 @@ import fs from 'fs';
 // import { dateStringToDate } from './util';
 // import { MatchResult } from './MatchResult';
 
+// создание класса при помощи дженерик типов
 export abstract class CsvFileReader<T> {
   data: T[] = [];
 
